@@ -1,0 +1,81 @@
+#include "DX3D/Graphics/RenderSystem.h"
+#include "DX3D/Graphics/GraphicsLogUtils.h"
+#include "DX3D/Core/Core.h"
+#include <DX3D/Graphics/SwapChain.h>
+#include <DX3D/Graphics/DeviceContext.h>
+#include <DX3D/Graphics/ShaderBinary.h>
+#include <DX3D/Graphics/GraphicsPipelineState.h>
+#include <DX3D/Graphics/VertexBuffer.h>
+#include <DX3D/Graphics/ConstantBuffer.h>
+#include <DX3D/Graphics/Mesh.h>
+#include <DX3D/Graphics/MeshLoader.h>
+using namespace dx3d;
+dx3d::RenderSystem::RenderSystem(const RenderSystemDesc& desc) : Base(desc.Base)
+{
+D3D_FEATURE_LEVEL featureLevel{};
+UINT createFlags{};
+#ifdef _DEBUG
+createFlags |= D3D11_CREATE_DEVICE_DEBUG;
+#endif
+
+
+DX3DGraphicsLogErrorAndThrow(D3D11CreateDevice(NULL, D3D_DRIVER_TYPE_HARDWARE,NULL, createFlags,NULL,0, D3D11_SDK_VERSION, &m_device, &featureLevel, &m_deviceContext),
+"tin din din dint Engine caput");
+
+DX3DGraphicsLogErrorAndThrow(m_device->QueryInterface(IID_PPV_ARGS(&m_IDdevice)),
+"QueryInterface failed IDdevice");
+
+DX3DGraphicsLogErrorAndThrow(m_IDdevice->GetParent(IID_PPV_ARGS(&m_IDadapter)),
+"GetParent failed IDadapter");
+
+DX3DGraphicsLogErrorAndThrow(m_IDadapter->GetParent(IID_PPV_ARGS(&m_IDfactory)),
+"GetParent failed IDfactory");
+
+		
+		
+}
+
+dx3d::RenderSystem::~RenderSystem()
+{
+}
+
+
+GrapihicsResourceDesc dx3d::RenderSystem::getGraphicsResourceDesc() const noexcept
+{
+	return { {m_logger}, shared_from_this(), *m_device.Get(), *m_IDfactory.Get() };
+} 
+SwapChainPtr dx3d::RenderSystem::createSwapChain(const SwapChainDesc& desc) const 
+{
+	return std::make_shared<SwapChain>(desc, getGraphicsResourceDesc());
+	
+}
+DeviceContextPtr dx3d::RenderSystem::createDeviceContext()
+{
+	return std::make_shared<DeviceContext>(getGraphicsResourceDesc());
+}
+ShaderBinaryPtr dx3d::RenderSystem::compileShader(const ShaderCompileDesc& desc)
+{
+	return std::make_shared<ShaderBinary>(desc, getGraphicsResourceDesc());
+}
+GraphicsPipelineStatePtr dx3d::RenderSystem::createGraphicsPipelineState(const GraphicsPipelineStateDesc& desc)
+{
+	return std::make_shared<GraphicsPipelineState>(desc, getGraphicsResourceDesc());
+}
+VertexBufferPtr dx3d::RenderSystem::createVertexBuffer(const VertexBufferDesc& desc)
+{
+	return std::make_shared<VertexBuffer>(desc, getGraphicsResourceDesc());
+}
+ConstantBufferPtr dx3d::RenderSystem::createConstantBuffer(const ConstantBufferDesc& desc)
+{
+	return std::make_shared<ConstantBuffer>(desc, getGraphicsResourceDesc());
+}
+MeshPtr dx3d::RenderSystem::createMesh(const MeshDesc& desc)
+{
+	return std::make_shared<Mesh>(desc, getGraphicsResourceDesc());
+}
+void dx3d::RenderSystem::executeCommandList(DeviceContext& context)
+{
+	Microsoft::WRL::ComPtr<ID3D11CommandList> list{};
+ DX3DGraphicsLogErrorAndThrow(context.m_context->FinishCommandList(false, &list), "FinishCommandList failed");
+ m_deviceContext->ExecuteCommandList(list.Get(), false);
+}
