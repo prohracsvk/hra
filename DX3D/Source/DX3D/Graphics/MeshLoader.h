@@ -29,6 +29,9 @@ namespace dx3d
 		{
 			Vec3 pos;
 			ss >> pos.x >> pos.y >> pos.z;
+			pos.x *= 0.15f;
+			pos.y *= 0.15f;
+			pos.z *= 0.15f;
 			positions.push_back(pos);
 
 		}
@@ -43,7 +46,7 @@ namespace dx3d
 				int idx = std::stoi(idxStr) - 1;
 
 				meshdata.indices.push_back((ui32)meshdata.vertices.size());
-				meshdata.vertices.push_back({ positions[idx], {1,1,1,1} });
+				meshdata.vertices.push_back({ positions[idx], {0.71,0.4,0.5,0.8} });
 			}
 		}
 

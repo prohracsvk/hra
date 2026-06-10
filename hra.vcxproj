@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DX3D\Source\DX3D\Graphics\ConstantBuffer.cpp" />
+    <ClCompile Include="DX3D\Source\DX3D\Graphics\DepthBuffer.cpp" />
     <ClCompile Include="DX3D\Source\DX3D\Graphics\DeviceContext.cpp" />
     <ClCompile Include="DX3D\Source\DX3D\Game\Display.cpp" />
     <ClCompile Include="DX3D\Source\DX3D\Core\Base.cpp" />
@@ -41,6 +42,7 @@
     <ClInclude Include="DX3D\Include\DX3D\Math\Vec3.h" />
     <ClInclude Include="DX3D\Include\DX3D\Math\Vec4.h" />
     <ClInclude Include="DX3D\Source\DX3D\Graphics\ConstantBuffer.h" />
+    <ClInclude Include="DX3D\Source\DX3D\Graphics\DepthBuffer.h" />
     <ClInclude Include="DX3D\Source\DX3D\Graphics\DeviceContext.h" />
     <ClInclude Include="DX3D\Include\DX3D\Game\Display.h" />
     <ClInclude Include="DX3D\Include\DX3D\All.h" />

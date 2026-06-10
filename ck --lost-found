@@ -1,0 +1,18 @@
+[33m43250b9[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{0}: rebase (abort): returning to refs/heads/master
+[33m43250b9[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{1}: rebase (abort): returning to refs/heads/master
+[33m43250b9[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{2}: Branch: renamed refs/heads/temporary_branch to refs/heads/master
+[33m43250b9[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{4}: commit (initial): Initial release: Custom C++ DirectX 11 Engine
+[33m748276b[m HEAD@{5}: commit: Mesh loader je spraveny
+[33m698eb49[m HEAD@{6}: commit: zajtra to dokoncim nech mozem mat 3D modely extremne vela toho je lebo mesh no
+[33mf5a823e[m HEAD@{7}: commit: neverim konecne sa mi nieco toci jupiii
+[33m0d6e156[m HEAD@{8}: commit: kusok od dokoncenia
+[33m61f3c02[m HEAD@{9}: commit: moj prvy trojuhlnik co ti jebe
+[33m5904400[m HEAD@{10}: commit: asi milion veci jebnutych cca 200 line kodu jebnema
+[33mb5be275[m HEAD@{11}: commit: uz mi jebne s toho extremne ale je dokonceny context
+[33m83f0527[m HEAD@{12}: commit: fix
+[33m908b8f8[m HEAD@{13}: commit: zaciatok deviceContext
+[33mc50d275[m HEAD@{14}: commit: dokoncenie swapchainu
+[33m0a9e9d4[m HEAD@{15}: commit: SwapChain je spraveny
+[33m67d65af[m HEAD@{16}: commit: dokoncovanie swapchain 1.22.2026
+[33m40215f4[m HEAD@{17}: commit: Add project files.
+[33ma50ddf8[m HEAD@{18}: commit (initial): Add .gitattributes, .gitignore, and README.md.

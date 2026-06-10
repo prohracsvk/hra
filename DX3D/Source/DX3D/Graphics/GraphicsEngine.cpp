@@ -6,6 +6,7 @@
 #include <DX3D/Math/Vec3.h>
 #include <DX3D/Math/Math.h>
 #include <DX3D/Graphics/Mesh.h>
+#include <DX3D/Graphics/MeshLoader.h>
 #include <fstream>
 using namespace dx3d;
 
@@ -39,13 +40,15 @@ auto ps = device.compileShader({ shaderFilePath, shaderSourceCode, shaderSourceC
 m_Pipeline = device.createGraphicsPipelineState({ *vs, *ps });
 
 
-GraphicsEngine::MeshData data;
-data.vertices = {
-	{ {-0.5f, -0.5f, 0.5f}, {1, 0, 0, 1} }, // Bod 1
-	{ { 0.0f,  0.5f, 0.5f}, {0, 1, 0, 1} }, // Bod 2
-	{ { 0.5f, -0.5f, 0.5f}, {0, 0, 1, 1} }  // Bod 3
-};
-data.indices = { 0, 1, 2 };
+GraphicsEngine::MeshData data = LoadOBJ("island_tree_01_4k.obj");
+
+
+
+data.vertices;
+data.indices;
+
+
+
 m_mesh = device.createMesh({ data.vertices.data(), sizeof(Vertex), (ui32)data.vertices.size(), data.indices.data(), (ui32)data.indices.size() });
  m_cb = device.createConstantBuffer({ sizeof(Matrix4x4) });
 }
