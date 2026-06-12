@@ -18,6 +18,7 @@ namespace dx3d {
 		VertexBufferPtr createVertexBuffer(const VertexBufferDesc& desc);
 		ConstantBufferPtr createConstantBuffer(const ConstantBufferDesc& desc);
 		MeshPtr createMesh(const MeshDesc& desc);
+		DepthBufferPtr createDephtBuffer(const DepthBufferDesc& desc);
 		void executeCommandList(DeviceContext& context);
 	private:
 		GrapihicsResourceDesc getGraphicsResourceDesc() const noexcept;

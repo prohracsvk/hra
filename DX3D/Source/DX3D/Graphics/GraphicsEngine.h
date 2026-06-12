@@ -30,9 +30,9 @@ namespace dx3d {
 		DeviceContextPtr m_deviceContext{};
 		GraphicsPipelineStatePtr m_Pipeline{};
 		VertexBufferPtr m_vertexPtr{};
-		ConstantBufferPtr m_cb;
-		MeshPtr m_mesh;
-
+		ConstantBufferPtr m_cb{};
+		MeshPtr m_mesh{};
+		DepthBufferPtr m_depthBuffer{};
 	
 	};  
 }

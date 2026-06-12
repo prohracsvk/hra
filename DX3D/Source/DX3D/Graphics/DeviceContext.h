@@ -7,7 +7,7 @@ class DeviceContext final : public GrahpicsResource
 {
 public: 
 	explicit DeviceContext(const GrapihicsResourceDesc& gDesc);
-	void clearAndSetBackBuffer(const SwapChain& swapChain, const Vec4& color);
+	void clearAndSetBackBuffer(const SwapChain& swapChain, const Vec4& color, const DepthBufferPtr& DepthBuffer);
 	void setGraphicsPipelineState(const GraphicsPipelineState& pipeline);
 	void setVertexBuffer(const VertexBuffer& desc);
 	void setViewportSize(const Math& size);
@@ -16,6 +16,7 @@ public:
 	void setConstantBuffer(const ConstantBufferPtr& buffer);
 	void setMesh(const MeshPtr& mesh);
 	void drawIndexed(ui32 indexCount, ui32 startIndexLocation);
+	void setDepthBuffer(const DepthBufferPtr& DepthBuffer);
 	
 	
 private:

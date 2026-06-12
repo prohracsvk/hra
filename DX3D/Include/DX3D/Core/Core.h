@@ -21,6 +21,7 @@ namespace dx3d {
 	class VertexBuffer;
 	class ConstantBuffer;
 	class Mesh;
+	class DepthBuffer;
 
 	using i32 = int;
 	using ui32 = unsigned int;
@@ -34,4 +35,5 @@ namespace dx3d {
 	using VertexBufferPtr = std::shared_ptr<VertexBuffer>;
 	using ConstantBufferPtr = std::shared_ptr<ConstantBuffer>;
 	using MeshPtr = std::shared_ptr<Mesh>;
+	using DepthBufferPtr = std::shared_ptr<DepthBuffer>;
 }

@@ -75,9 +75,14 @@ namespace dx3d
 		const void* indexList{};
 		ui32 indexListSize{};
 	};
+	struct DepthBufferDesc
+	{
+		ui32 width = 0;
+		ui32 height = 0;
+	};
 	struct GameDesc
 	{
-		Math windowSize{ 1280,720 };
+		Math windowSize{ 1920,1080 };
 		Logger::LogLevel logLevel = Logger::LogLevel::Error;
 	};
 }

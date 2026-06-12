@@ -9,6 +9,7 @@
 #include <DX3D/Graphics/ConstantBuffer.h>
 #include <DX3D/Graphics/Mesh.h>
 #include <DX3D/Graphics/MeshLoader.h>
+#include <DX3D/Graphics/DepthBuffer.h>
 using namespace dx3d;
 dx3d::RenderSystem::RenderSystem(const RenderSystemDesc& desc) : Base(desc.Base)
 {
@@ -72,6 +73,10 @@ ConstantBufferPtr dx3d::RenderSystem::createConstantBuffer(const ConstantBufferD
 MeshPtr dx3d::RenderSystem::createMesh(const MeshDesc& desc)
 {
 	return std::make_shared<Mesh>(desc, getGraphicsResourceDesc());
+}
+DepthBufferPtr dx3d::RenderSystem::createDephtBuffer(const DepthBufferDesc& desc)
+{
+	return std::make_shared<DepthBuffer>(desc, getGraphicsResourceDesc());
 }
 void dx3d::RenderSystem::executeCommandList(DeviceContext& context)
 {

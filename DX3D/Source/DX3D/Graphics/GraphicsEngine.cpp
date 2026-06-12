@@ -16,7 +16,6 @@ dx3d::GraphicsEngine::GraphicsEngine(const GraphicsEngineDesc& desc) : Base(desc
 {
 
 	m_renderSystem = std::make_shared<RenderSystem>(RenderSystemDesc{ m_logger });
-
 	auto& device = *m_renderSystem;
 	m_deviceContext = m_renderSystem->createDeviceContext();
 
@@ -38,9 +37,10 @@ auto vs = device.compileShader({ shaderFilePath, shaderSourceCode, shaderSourceC
 auto ps = device.compileShader({ shaderFilePath, shaderSourceCode, shaderSourceCodeSize , "PSMain", ShaderType::PixelShader});
 
 m_Pipeline = device.createGraphicsPipelineState({ *vs, *ps });
-
+m_depthBuffer = m_renderSystem->createDephtBuffer({ 1920 , 1080 });
 
 GraphicsEngine::MeshData data = LoadOBJ("island_tree_01_4k.obj");
+
 
 
 
@@ -52,6 +52,8 @@ data.indices;
 m_mesh = device.createMesh({ data.vertices.data(), sizeof(Vertex), (ui32)data.vertices.size(), data.indices.data(), (ui32)data.indices.size() });
  m_cb = device.createConstantBuffer({ sizeof(Matrix4x4) });
 }
+
+
 
 dx3d::GraphicsEngine::~GraphicsEngine()
 {
@@ -66,7 +68,7 @@ RenderSystem& dx3d::GraphicsEngine::getRenderSystem() noexcept
 void dx3d::GraphicsEngine::render(SwapChain& swapChain)
 {
 	auto& context = *m_deviceContext;
-	context.clearAndSetBackBuffer(swapChain, { 0.29f, 0.39f, 0.55f, 1 });
+	context.clearAndSetBackBuffer(swapChain, { 0.29f, 0.39f, 0.55f, 1 }, m_depthBuffer);
 	context.setGraphicsPipelineState(*m_Pipeline);
 	context.setViewportSize(swapChain.getSize());
 

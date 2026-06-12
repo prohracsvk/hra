@@ -4,6 +4,8 @@
 #include <DX3D/Graphics/VertexBuffer.h>
 #include <DX3D/Graphics/ConstantBuffer.h>
 #include <DX3D/Graphics/Mesh.h>
+#include <DX3D/Graphics/DepthBuffer.h>
+
 using namespace dx3d;
 dx3d::DeviceContext::DeviceContext(const GrapihicsResourceDesc& gDesc) : GrahpicsResource(gDesc)
 {
@@ -12,12 +14,16 @@ dx3d::DeviceContext::DeviceContext(const GrapihicsResourceDesc& gDesc) : Grahpic
 
 }
 
-void dx3d::DeviceContext::clearAndSetBackBuffer(const SwapChain& swapChain, const Vec4& color)
+void dx3d::DeviceContext::clearAndSetBackBuffer(const SwapChain& swapChain, const Vec4& color, const DepthBufferPtr& DepthBuffer)
 {
 	f32 fColor[] = { color.x,color.y,color.z,color.w };
 	auto rtv = swapChain.m_RenderSystemWiew.Get();
+	auto dsv = DepthBuffer->m_DSV.Get();
+	
 	m_context->ClearRenderTargetView(rtv ,fColor);
-	m_context->OMSetRenderTargets(1, &rtv, nullptr);
+	m_context->ClearDepthStencilView(DepthBuffer->m_DSV.Get(), D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
+	m_context->OMSetRenderTargets(1, &rtv, dsv);
+
 }
 
 void dx3d::DeviceContext::setGraphicsPipelineState(const GraphicsPipelineState& pipeline)
@@ -93,5 +99,7 @@ void dx3d::DeviceContext::drawIndexed(ui32 indexCount, ui32 startIndexLocation)
 	m_context->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 	m_context->DrawIndexed(indexCount, startIndexLocation, 0);
 }
+
+
 
 
