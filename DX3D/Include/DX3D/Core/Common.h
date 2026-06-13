@@ -80,6 +80,10 @@ namespace dx3d
 		ui32 width = 0;
 		ui32 height = 0;
 	};
+	struct CameraDesc
+	{
+
+	};
 	struct GameDesc
 	{
 		Math windowSize{ 1920,1080 };

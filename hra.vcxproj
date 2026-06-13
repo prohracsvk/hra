@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DX3D\Source\DX3D\Graphics\Camera.cpp" />
     <ClCompile Include="DX3D\Source\DX3D\Graphics\ConstantBuffer.cpp" />
     <ClCompile Include="DX3D\Source\DX3D\Graphics\DepthBuffer.cpp" />
     <ClCompile Include="DX3D\Source\DX3D\Graphics\DeviceContext.cpp" />
@@ -38,6 +39,7 @@
     <ClCompile Include="DX3D\Source\DX3D\Graphics\Mesh.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DX3D\Source\DX3D\Graphics\Camera.h" />
     <ClInclude Include="DX3D\Include\DX3D\Math\Math.h" />
     <ClInclude Include="DX3D\Include\DX3D\Math\Vec3.h" />
     <ClInclude Include="DX3D\Include\DX3D\Math\Vec4.h" />

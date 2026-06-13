@@ -16,7 +16,7 @@ public:
 	void setConstantBuffer(const ConstantBufferPtr& buffer);
 	void setMesh(const MeshPtr& mesh);
 	void drawIndexed(ui32 indexCount, ui32 startIndexLocation);
-	void setDepthBuffer(const DepthBufferPtr& DepthBuffer);
+	
 	
 	
 private:
