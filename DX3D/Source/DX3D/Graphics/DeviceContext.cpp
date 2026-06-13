@@ -5,6 +5,7 @@
 #include <DX3D/Graphics/ConstantBuffer.h>
 #include <DX3D/Graphics/Mesh.h>
 #include <DX3D/Graphics/DepthBuffer.h>
+#include <iostream>
 
 using namespace dx3d;
 dx3d::DeviceContext::DeviceContext(const GrapihicsResourceDesc& gDesc) : GrahpicsResource(gDesc)
@@ -20,9 +21,19 @@ void dx3d::DeviceContext::clearAndSetBackBuffer(const SwapChain& swapChain, cons
 	auto rtv = swapChain.m_RenderSystemWiew.Get();
 	auto dsv = DepthBuffer->m_DSV.Get();
 	
+	m_context->OMSetRenderTargets(1, &rtv, dsv);
 	m_context->ClearRenderTargetView(rtv ,fColor);
 	m_context->ClearDepthStencilView(DepthBuffer->m_DSV.Get(), D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
-	m_context->OMSetRenderTargets(1, &rtv, dsv);
+
+
+	if (dsv == nullptr)
+	{
+		std::cout << "je to null";
+	}
+	if (rtv == nullptr)
+	{
+		std::cout << "je to null rtv";
+	}
 
 }
 
@@ -36,7 +47,7 @@ void dx3d::DeviceContext::setGraphicsPipelineState(const GraphicsPipelineState& 
 	D3D11_RASTERIZER_DESC rasterDesc = {};
 	rasterDesc.CullMode = D3D11_CULL_NONE; 
 	rasterDesc.FillMode = D3D11_FILL_SOLID; 
-	rasterDesc.DepthClipEnable = false;
+	rasterDesc.DepthClipEnable = true;
 	rasterDesc.ScissorEnable = false;
 	rasterDesc.MultisampleEnable = false;
 

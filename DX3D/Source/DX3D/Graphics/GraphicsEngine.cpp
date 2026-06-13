@@ -37,7 +37,7 @@ auto vs = device.compileShader({ shaderFilePath, shaderSourceCode, shaderSourceC
 auto ps = device.compileShader({ shaderFilePath, shaderSourceCode, shaderSourceCodeSize , "PSMain", ShaderType::PixelShader});
 
 m_Pipeline = device.createGraphicsPipelineState({ *vs, *ps });
-m_depthBuffer = m_renderSystem->createDephtBuffer({ 1920 , 1080 });
+m_depthBuffer = m_renderSystem->createDephtBuffer({1920,1080});
 
 GraphicsEngine::MeshData data = LoadOBJ("island_tree_01_4k.obj");
 

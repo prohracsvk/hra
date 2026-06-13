@@ -82,5 +82,5 @@ void dx3d::RenderSystem::executeCommandList(DeviceContext& context)
 {
 	Microsoft::WRL::ComPtr<ID3D11CommandList> list{};
  DX3DGraphicsLogErrorAndThrow(context.m_context->FinishCommandList(false, &list), "FinishCommandList failed");
- m_deviceContext->ExecuteCommandList(list.Get(), false);
+ m_deviceContext->ExecuteCommandList(list.Get(), true);
 }
