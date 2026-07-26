@@ -39,7 +39,7 @@ auto ps = device.compileShader({ shaderFilePath, shaderSourceCode, shaderSourceC
 m_Pipeline = device.createGraphicsPipelineState({ *vs, *ps });
 m_depthBuffer = m_renderSystem->createDephtBuffer({1920,1080});
 
-GraphicsEngine::MeshData data = LoadOBJ("koleso.obj");
+GraphicsEngine::MeshData data = LoadOBJ("island_tree_01_4k.obj");
 
 
 

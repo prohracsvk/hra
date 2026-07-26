@@ -1,4 +1,5 @@
 #pragma once
+#include <DX3D/Math/Math.h>
 #include "DX3D/Core/Core.h"
 #include "DX3D/Core/Logger.h"
 #include <DX3D/Math/Rect.h>
@@ -82,6 +83,16 @@ namespace dx3d
 	};
 	struct CameraDesc
 	{
+		DirectX::XMVECTOR m_position;
+		DirectX::XMVECTOR m_taget;
+		DirectX::XMVECTOR m_up;
+		DirectX::XMVECTOR direction;
+
+		f32 fov;
+		f32 aspectRatio;
+		f32 nearZ;
+		f32 farZ;
+		
 
 	};
 	struct GameDesc
